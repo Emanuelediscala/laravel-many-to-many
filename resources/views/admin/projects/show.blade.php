@@ -5,5 +5,10 @@
 <p>CONTENT: {{ $project->content }}</p>
 <p>DEAD LINE: {{ $project->deadline }}</p>
 <p>TYPE:  {{ $project->type ? $project->type->name : "Senza categoria" }} </p>
+<ul>
+    @foreach ($project->tecnologies as $tecnology)
+    <li>{{$tecnology->name}}</li>
+    @endforeach
+</ul>
 
 @endsection

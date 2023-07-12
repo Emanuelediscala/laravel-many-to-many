@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('project_tecnology', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('type_id')->nullable()->constrained(); 
-            $table->foreignID('tecnology_id')->nullable()->constrained(); 
+            $table->foreignId('project_id')->nullable()->constrained(); 
+            $table->foreignId('tecnology_id')->nullable()->constrained(); 
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_tag');
+        Schema::dropIfExists('project_tecnology');
     }
 };

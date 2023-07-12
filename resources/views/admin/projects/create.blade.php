@@ -28,10 +28,10 @@
         @endforeach 
     </select>
     
-    @foreach ($tags as $i => $tag)
+    @foreach ($tecnologies as $i => $tecnology)
     <div class="form-check">
-            <input  class="form-check-input" type="checkbox" name="tags[]" id="tags{{$i}}" value="{{$tag->id}}">
-            <label for="tags{{$i}}" class="form-check-label">{{$tag->name}}</label>
+            <input  class="form-check-input" type="checkbox" name="tecnologies[{{$i}}]" id="tecnology" value="{{$tecnology->id}}">
+            <label for="tecnologies{{$i}}" class="form-check-label">{{$tecnology->name}}</label>
     </div>
     @endforeach 
     <input type="submit" class="form-control btn btn-primary my-4" value="Create" style="width: 10rem;">

@@ -32,7 +32,7 @@ class ProjectController extends Controller
     {   
         $types = Type::all();
         $tecnologies = Tecnology::all();
-        return view("admin.projects.create",compact("types","tags"));
+        return view("admin.projects.create",compact("types","tecnologies"));
     }
 
     /**
@@ -44,12 +44,14 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
-
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
+        
         // Vanno inseriti dopo il save servono per collegare la tabella ponte
-        $newProject->tags()->attach($data->tags);
+        $newProject->tecnologies()->sync($data["tecnologies"]);
+        
+
 
         return to_route("admin.projects.show", $newProject);
     }

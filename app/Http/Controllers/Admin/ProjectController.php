@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use App\Models\Tecnology;
-
+use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
 {
     /**
@@ -44,6 +44,22 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
+
+        if($request->hasFile("image")) {
+            
+            //dato dalla request, non validato
+            // $img_path = $request->file("image")->store("uploads");
+            
+            $img_path = Storage::put("uploads", $data['image']);
+            
+
+            // $img_path = $data["image"]->store("uploads");
+
+            $data['image'] = $img_path;
+            // dd($data["image"]);
+            
+        }
+        
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
@@ -53,7 +69,7 @@ class ProjectController extends Controller
         
 
 
-        return to_route("admin.projects.show", $newProject);
+         return to_route("admin.projects.show", $newProject);
     }
 
     /**

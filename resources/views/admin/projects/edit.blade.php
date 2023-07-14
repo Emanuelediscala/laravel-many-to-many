@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<h1>CREA NUOVO PRODOTTO</h1>
+<h1>MODIFICA UN PRODOTTO ESISTENTE</h1>
 
 <form action="{{route('admin.projects.store')}}" method="POST" class="needs-validation" enctype="multipart/form-data">
     
@@ -34,7 +34,7 @@
             <label for="tecnologies{{$i}}" class="form-check-label">{{$tecnology->name}}</label>
     </div>
     @endforeach 
-    <input type="file" name="image" id="image" class="form-control">
+    <input type="file" name="image">
     <input type="submit" class="form-control btn btn-primary my-4" value="Create" style="width: 10rem;">
 
 </form>

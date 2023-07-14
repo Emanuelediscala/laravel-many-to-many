@@ -12,4 +12,6 @@
     @endforeach
 </ul>
 
+<img src="{{ asset("storage/" . $project->image)}}" alt="{{$project->title}}">
+
 @endsection

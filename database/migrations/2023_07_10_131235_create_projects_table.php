@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("title", 160);
             $table->text("content")->nullable();
             $table->date("deadline")->nullable();
+            $table->string("image", 255)->nullable();
             $table->timestamps();
         });
     }
